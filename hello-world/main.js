@@ -1,6 +1,7 @@
 console.log('main process working');
 
 const sharp = require('sharp');
+
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -40,6 +41,7 @@ if(!selectedAudio || !selectedImages)
   console.log("images or audio not selected");
   return;
 }
+//resizeImages();
 //else if (selectedImages.length > 8)
 videoshow(selectedImages, options)
 .audio(selectedAudio)
@@ -84,21 +86,29 @@ const fs = require('fs') ;
 
 module.exports.openFile = openFile;
 
-var resizeImages = function resizeImages() {
+function resizeImages() {
+  var i = 0;
   for (var img of selectedImages)
   {
-    sharp(img).resize({ height: 300, width: 222 }).toFile(outputFile)
-    .then(function(newFileInfo) {
-        img = outputFile;
-        console.log("Success");
-    })
-    .catch(function(err) {
-        console.log("Error occured");
-    });
-  }
+    sharp(img)
+  .resize(200, 300, {
+    kernel: sharp.kernel.nearest,
+    fit: 'contain',
+    position: 'right top',
+    background: { r: 255, g: 255, b: 255, alpha: 0.5 }
+  })
+  .toFile(i + 'output.png')
+  .then(() => {
+    // output.png is a 200 pixels wide and 300 pixels high image
+    // containing a nearest-neighbour scaled version
+    // contained within the north-east corner of a semi-transparent white canvas
+  });
+     img = i + 'output.png'
+      i++;
+}
 }
 
-module.exports.resizeImages = resizeImages;
+//module.exports.resizeImages = resizeImages;
 
 var openAudioFile = function openAudioFile () {
     const { dialog } = require('electron');

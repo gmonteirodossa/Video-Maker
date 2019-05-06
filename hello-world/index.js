@@ -52,7 +52,6 @@ button.addEventListener('click', () => {
 	document.body.style.cursor='wait';
 
 	parseInputSub();
-	main.resizeImages();
 	fs.writeFile('blank.txt', lyrics, (err) => {  
 		// throws an error, you could also catch it here
 		if (err) throw err;
