@@ -1,0 +1,15 @@
+1
+00:00:0,000 --> 00:00:7,000
+Ela eh linda 
+2
+00:00:8,000 --> 00:00:15,000
+ Boneca 
+3
+00:00:16,000 --> 00:00:23,000
+ Tem um amigo robertinho 
+4
+00:00:24,000 --> 00:00:31,000
+ Gasta milhoes no salao 
+5
+00:00:32,000 --> 00:00:39,000
+ Pra conhecer o Jon Snow
