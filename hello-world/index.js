@@ -46,7 +46,13 @@ ipcRenderer.on('videostatus', (event, message) => {
 
 var button = document.getElementById('createvideo');
 button.addEventListener('click', () => {
+	button1.disabled = true;
+	button.disabled = true;
+	button2.disabled = true;
+	document.body.style.cursor='wait';
+
 	parseInputSub();
+	main.resizeImages();
 	fs.writeFile('blank.txt', lyrics, (err) => {  
 		// throws an error, you could also catch it here
 		if (err) throw err;
@@ -54,12 +60,6 @@ button.addEventListener('click', () => {
 		// success case, the file was saved
 		console.log('Subtitles saved!');
 	  });
-
-	
-	button1.disabled = true;
-	button.disabled = true;
-	button2.disabled = true;
-	document.body.style.cursor='wait';
 
 	if(main.createVideo() == null)
 	{

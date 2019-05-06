@@ -1,6 +1,6 @@
 console.log('main process working');
 
-
+const sharp = require('sharp');
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -60,6 +60,7 @@ videoshow(selectedImages, options)
 })
 }
 module.exports.createVideo = createVideo;
+
 var openFile = function openFile () {
 const { dialog } = require('electron');
 const fs = require('fs') ;
@@ -82,6 +83,22 @@ const fs = require('fs') ;
 }
 
 module.exports.openFile = openFile;
+
+var resizeImages = function resizeImages() {
+  for (var img of selectedImages)
+  {
+    sharp(img).resize({ height: 300, width: 222 }).toFile(outputFile)
+    .then(function(newFileInfo) {
+        img = outputFile;
+        console.log("Success");
+    })
+    .catch(function(err) {
+        console.log("Error occured");
+    });
+  }
+}
+
+module.exports.resizeImages = resizeImages;
 
 var openAudioFile = function openAudioFile () {
     const { dialog } = require('electron');

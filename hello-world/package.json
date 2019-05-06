@@ -12,6 +12,7 @@
 		"@ffmpeg-installer/ffmpeg": "^1.0.17",
 		"ffmpeg": "0.0.4",
 		"ffprobe": "^1.1.0",
+		"sharp": "^0.22.1",
 		"spin.js": "^4.0.0",
 		"videoshow": "^0.1.11"
 	}
